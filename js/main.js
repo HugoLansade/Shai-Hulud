@@ -1834,7 +1834,9 @@ function animate() {
     }
   });
 
-  
+  if(shaiHulud.pv <= 0){
+      alert("Shai Hulud died in this epic fight")
+  }
   /***********************************Fonction modify by guillaume************************ */
   /*
     for (let i = 0; i < particles.length; i+=1) {

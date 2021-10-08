@@ -2,7 +2,7 @@
 //****************************** */ Declaration du canvas
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
-canvas.width = 1300;  //1700
+canvas.width = 1350;  //1700
 // canvas.style.Width =1400;
 canvas.height = 800;  // 1000
 
@@ -35,8 +35,6 @@ function updateHTML() {
     lvlID.textContent = `${objReboot.lvl}`;
     lvlIDcustom.textContent = `${objReboot.lvl}`;
     harkonnenID.firstChild.textContent = `${objReboot.objstate.nbHarkonnen}`;
-    console.log(stateBattle.harkonnenMort);
-    console.log('here');
     harkonnenID.lastElementChild.textContent = `${stateBattle.harkonnenMort}`;
   
     if (stateBattle.sardaukarMort !== 0) {
@@ -468,7 +466,28 @@ const objReboot = {
 // appeler des qu'on monte de niveau ou descend
 function reboot() {
     //if(rebootTOTAL){
-        console.log('in reboot');
+    let lvlSouhaite = prompt("What level do you want to play ?");    
+    lvlID.textContent = `${lvlSouhaite}`;
+    lvlIDcustom.textContent = `${lvlSouhaite}`;
+//Initialisation des valeurs à 0 pour chaque début de jeu
+    stateBattle.sardaukarMort =0;
+    stateBattle.harkonnenMort = 0;
+    stateBattle.usineMort = 0;
+    stateBattle.vehiculeHarkonnenMort = 0;
+    stateBattle.bombeHarkonnenOnField = 0;
+    stateBattle.bombeSardaukarField = 0;
+    stateBattle.bombeVehiculeHarkonnenOnField = 0;
+    objReboot.backupSardaukar = 0;
+    objReboot.lvl = lvlIDcustom.textContent;
+    objReboot.vaisseauxSardaukar = null;
+    objReboot.objstate = null;
+    objReboot.objArrayTroupesReboot = null;
+    objReboot.allOfProtagonistArrayReboot = null;
+    objReboot.arraySardaukarParachuteReboot =null;
+console.log('in reboot');
+console.log(objReboot.objArrayTroupesReboot);
+console.log('allof');
+console.log(objReboot.allOfProtagonistArrayReboot);
         let backupSardaukar = 0;
         let lvl = lvlIDcustom.textContent;
         objReboot.backupSardaukar = backupSardaukar;
@@ -491,7 +510,6 @@ function reboot() {
         let arraySardaukarParachute = objetArrayTroupes.sardaukars;
         
         objReboot.arraySardaukarParachuteReboot = arraySardaukarParachute;
-        console.log("reboot");
         // updateHTML();
    
        
@@ -1183,7 +1201,7 @@ function gestionDesPassagesSardaukars(){
     if(objReboot.objstate.nbSardaukar <= limitationEcran.sardaukarMax){
         passageVaisseauEtPushSardaukar(objReboot.objstate.nbSardaukar);
 
-    } else if(objReboot.objstate.nbSardaukar > limitationEcran.sardaukarMax && goodposition === false){
+    } else if(objReboot.objstate.nbSardaukar > limitationEcran.sardaukarMax ){//&& goodposition === false
         passageVaisseauEtPushSardaukar(limitationEcran.sardaukarMax); // on fait un premier passage enlevant la premiere salve
         
     }

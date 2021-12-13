@@ -26,8 +26,8 @@ const harkonnenVehiculeID = document.getElementById("harkonnenVehicule");
 const usineID = document.getElementById("usine");
 const pvHulud = document.getElementById("life-shai-hulud");
 
-let color = "color : #E8B24A"
-let colorTextStyle = `style=${color}`
+let color =  "E8B24A";
+let colorTextStyle = `style= "color : #${color}"`
 
 function updateHTML() {
     
@@ -163,7 +163,7 @@ class Protagonniste {
         this.y += this.velocity;
         this.frameY = 1; 
 
-    }*/
+    }*/ 
     else if(this.type === 'vaisseauxSardaukar'){
         this.x -= this.velocity; // Si c'est le vaisseaux on veut seulement qu'il traverse l'écran
         this.frameY = 0;
@@ -348,7 +348,7 @@ const pv = {
   fremFood: 3,
   harkonnenBombe: 10,
   sardaukarBombe: 15,
-  vehiculeHarkonnenBombe: 25,
+  vehiculeHarkonnenBombe: 10,
 };
 
 const shaiHulud = {
@@ -466,7 +466,7 @@ const objReboot = {
 // appeler des qu'on monte de niveau ou descend
 function reboot() {
     //if(rebootTOTAL){
-    let lvlSouhaite = prompt("What level do you want to play ?");    
+    let lvlSouhaite = prompt("What level do you want to play ????????");    
     lvlID.textContent = `${lvlSouhaite}`;
     lvlIDcustom.textContent = `${lvlSouhaite}`;
 //Initialisation des valeurs à 0 pour chaque début de jeu
@@ -484,10 +484,10 @@ function reboot() {
     objReboot.objArrayTroupesReboot = null;
     objReboot.allOfProtagonistArrayReboot = null;
     objReboot.arraySardaukarParachuteReboot =null;
-console.log('in reboot');
-console.log(objReboot.objArrayTroupesReboot);
-console.log('allof');
-console.log(objReboot.allOfProtagonistArrayReboot);
+    console.log('in reboot');
+    console.log(objReboot.objArrayTroupesReboot);
+    console.log('allof');
+    console.log(objReboot.allOfProtagonistArrayReboot);
         let backupSardaukar = 0;
         let lvl = lvlIDcustom.textContent;
         objReboot.backupSardaukar = backupSardaukar;
@@ -702,7 +702,7 @@ function lvlCharacteristicObject(lvl) {
 
 //Fonction permettant d'assigner une vitesse pour un perso entre ses vitesses maximale et minimale
 function assignationVitesse(speedMax, speedMin) {
-  return Math.random() * speedMax + speedMin;
+  return Math.random() * (speedMax-speedMin) + speedMin;
 }
 
 /*****UTILISATION : Appel lvlCharacteristicObject pour définir les array contenant le nombre de protagoniste souhaité en fonction du niveau */
@@ -1154,19 +1154,32 @@ function drawVaisseau (){
 }
 
 function passageVaisseauEtPushSardaukar(condition){
-    for(let i =0; i < condition; i ++){
-        
-                
-        let velocity = assignationVitesse(sardaukar.maxSpeedSardaukar, sardaukar.minSpeedSardaukar);
-        let xInBetweenScreen = tabXSardaukar[0];
-        if(objReboot.vaisseauxSardaukar.x > -objReboot.vaisseauxSardaukar.width){
-            
-            
-            
+    for(let i =0; i < condition; i ++){            
+      console.log("condition",condition)
+    console.log("i",i)
+
+        // console.log("objReboot.vaisseauxSardaukar.x" )
+        // console.log(objReboot.vaisseauxSardaukar.x )
+
+        if(objReboot.vaisseauxSardaukar.x > -objReboot.vaisseauxSardaukar.width){          
+          let velocity = assignationVitesse(sardaukar.maxSpeedSardaukar, sardaukar.minSpeedSardaukar);
+          let xInBetweenScreen = tabXSardaukar[0];
+          console.log("vaisseauxSardaukar.x",objReboot.vaisseauxSardaukar.x)
+
+
+                    // console.log("vaisseauxSardaukar.x",objReboot.vaisseauxSardaukar.x)
+                    // console.log("xInBetweenScreen",xInBetweenScreen)
+                    // console.log("vaisseauxSardaukar.width",objReboot.vaisseauxSardaukar.width)
             //On rentre uniquement si la distance entre la position de spawn du sardaukar dans le ciel (décidé avant xInbetween)
             //et la position du centre du vaisseau est inférieur à la largeur du vaisseaux on prend la valeur absolue pour ne pas avoir de probleme si le point de spawn est plus grand que la position de l'avion
             if(Math.abs(objReboot.vaisseauxSardaukar.x + objReboot.vaisseauxSardaukar.width - xInBetweenScreen) < objReboot.vaisseauxSardaukar.width/2){
-                
+               console.log("vaisseauxSardaukar.x",objReboot.vaisseauxSardaukar.x)
+                    console.log("xInBetweenScreen",xInBetweenScreen)
+                    console.log("vaisseauxSardaukar.width",objReboot.vaisseauxSardaukar.width)
+                    let a = Math.abs(vaisseauxSardaukar.x + vaisseauxSardaukar.width - xInBetweenScreen);
+                    let b = vaisseauxSardaukar.width/2;
+                    console.log("abs",a)
+                    console.log("<",b)
                 //On push le sardau dans l'array qui est dessinné constamment
                 sardaukarLegion.push(
                     new Protagonniste(
@@ -1188,7 +1201,7 @@ function passageVaisseauEtPushSardaukar(condition){
             objReboot.vaisseauxSardaukar.x = canvas.width;
             objReboot.backupSardaukar++;
 
-            // console.log('go2');
+            console.log('go2');
         }                  
     }
 }
@@ -1197,11 +1210,13 @@ function passageVaisseauEtPushSardaukar(condition){
 // console.log('lim ecran : ' + limitationEcran.sardaukarMax );
 
 function gestionDesPassagesSardaukars(){
-    // CAS 1 ****************************
+    // CAS 1 **************************** 
+    //Si le nombre de sardaukar du niveau est inférieur à la limitation de sardau de l'ecran on les parachutes tous
     if(objReboot.objstate.nbSardaukar <= limitationEcran.sardaukarMax){
         passageVaisseauEtPushSardaukar(objReboot.objstate.nbSardaukar);
 
-    } else if(objReboot.objstate.nbSardaukar > limitationEcran.sardaukarMax ){//&& goodposition === false
+    }     //Si le nombre de sardaukar du niveau est supérieur à la limitation de sardau de l'ecran on le nombre de la limitation d'écran
+    else if(objReboot.objstate.nbSardaukar > limitationEcran.sardaukarMax ){//&& goodposition === false
         passageVaisseauEtPushSardaukar(limitationEcran.sardaukarMax); // on fait un premier passage enlevant la premiere salve
         
     }
@@ -1804,7 +1819,7 @@ function animate() {
  
 
   drawEnnemies();
-//   handleSoldierFrame();
+  handleSoldierFrame();
   drawNonStop();
   parachuteSardaukarBissss();
 
@@ -2362,7 +2377,7 @@ let previouslvlId = document.getElementById('previous');
 
 nextlvlId.addEventListener('click', () => {
     if(objReboot.lvl === 100){
-        alert("Congrats you survived all waves !.");
+        alert("Congrats you survived all waves !");
     } else {objReboot.lvl++;}
     console.log(objReboot.lvl);
     console.log(lvl);

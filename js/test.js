@@ -1504,7 +1504,7 @@ function animate() {
     */
 
 
-  /***********************************Fonction modify by guillaume************************ */
+  /*********************************** End of Fonction modify by guillaume************************ */
 
   drawEnnemies();
 

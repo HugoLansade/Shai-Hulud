@@ -1,118 +1,540 @@
+/* @import './reset.css'; */
 @font-face {
     font-family: "carolingia";
     src: url("../font/carolingia.ttf"); 
    }
 
-#canvas {
-    border : 2px solid #f4a261;
-}
-
 *{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    
+    margin : 0;
+    padding : 0;
+    font-family: 'carolingia';  
 }
 
-body {
-    /* display: flex;
-    flex-direction: row; */
-    
-    padding: 5px;
-    font-family: 'carolingia';    
+
+:root {
+    --coverPageHeight: 95vh;
+    --coverPageWidth: 50vw;
+    --backPageHeight: 95vh;
+    --backPageWidth: 50vw;
+    --pagenormalHeight: 93vh;
+    --pagenormalWidth: 49vw;
+    --pagenormalMarginTop: 10px;
 }
 
-#bookBackground{
-    min-height: 100vh;
-    display: flex;
-    flex-direction: row;
-    background-image: url("../image/backgroundLivre.png");
+body{
+    height: 100vh;
+    background-image: url('./../img/woodTable.jpg');
     background-repeat: no-repeat;
-    background-size: cover;    
+    background-size: cover;
+    background-position: center;
 }
 
+/**********************Cover page internal design************************/
 
-
-/* Page de gauche */
-#page-gauche {
-    width: 28%;
+.title{
+    color : #E9AA30;
 }
 
-
-#page-gauche > article {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 20px;
-}
-
-#page-gauche > article > h1{
-    margin: 85px 20px;
-    color: #E8B24A;
-    font-size: 6em;
-}
-
-#page-gauche > article > h2{
-    margin: 20px 20px;
-    color: #000000;
+#title-shai-hulud{
+    color : #424356;
     font-size: 4em;
 }
 
-#page-gauche > article > p{
-    margin: 10px 20px;
-    color: #000000;
+#title-chapter{
+    color : #424356;
     font-size: 2em;
 }
 
+.cover h1{
+    position: absolute;
+    top: 18%; 
+    font-size: 6vw;
+}
 
+.cover h4{
+    font-size: 1vw;
+}
 
-/*Page de droite*/
-#page-droite{
-   width: 72%;
-   /* position: relative; */
-    padding: 10px 20px;
+#cover-arrow{
+    position: absolute;
+    top: 45%; left: 89%;
+    height: 100px;    
+    cursor: pointer;
+}
+
+/**********************Notice page internal design************************/
+
+/* .notice-page{
+    position: relative;
+    top: 10%; left : 48vw;
+} */
+
+.center{
+    text-align: center;
+}
+
+#notice-text > h2 {
+    font-size: 2em;
+    color: #E8B24A;
+    margin: 20px 0;
+}
+
+#notice-text > p {
+    font-size: 2em;
+    margin: 20px 30px;
+}
+
+.notice-title{
+    font-size: 3em;
+    color: #E8B24A;
+    margin: 20px 0;
+}
+
+#notice-page-arrow{
+    position: absolute;
+    top: 80%; left: 45%;
+    height: 100px;    
+    cursor: pointer;
+}
+
+/* #notice-text{
+    height: var(--pagenormalHeight);
+    width: var(--pagenormalWidth);
+} */
+
+/**********************Page global design************************/
+/****************************************************************/
+
+/* body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    perspective: 1000px;
+} */
+
+.content{
+    /* height: 50vh; */
+    /* max-width: 80vw; */
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    perspective:1000px; /*Not working why?*/
+}
+
+.book{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: space-between;
+    /* margin-top: 50px; */
+    /* margin-left: 100px; */
+}
+
+.cover{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    height: var(--coverPageHeight);
+    width: var(--coverPageWidth);
+    background-image: url('./../img/firstPage.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 2px 20px 20px 2px ;
+    position: absolute;
+    /* box-shadow: 1px 1px 10px gray; */ /*we do not use it to avoid the shadow inside of the book wich will be an issue for canvas*/
+    transform: rotateX(10deg);
+    z-index: 1;
+    transition: all 3s;
+    transform-origin: center left; /*to have the open book effect (open on the left)*/
+}
+
+.page,
+.notice-page{
+    margin-top: var(--pagenormalMarginTop);
+    height: var(--pagenormalHeight);
+    width: var(--pagenormalWidth);
+    background: rgb(255, 242, 199);
+    position: absolute;
+    border-radius: 2px 10px 10px 2px ;
+    z-index: -1;
+    transform: rotateX(10deg);
+    transform-origin: center left; /*to have the open book effect (open on the left)*/
+}
+
+.middle-page{
+    margin-top: var(--pagenormalMarginTop);
+    height: var(--pagenormalHeight);
+    width: var(--pagenormalWidth);
+    background: rgb(255, 242, 199);
+    position: absolute;
+    border-radius: 2px 10px 10px 2px ;
+    z-index: -2;
+    transform: rotateX(10deg);
+    transform-origin: center left; /*to have the open book effect (open on the left)*/
+}
+
+.game-page{
+    margin-top: var(--pagenormalMarginTop);
+    height: var(--pagenormalHeight);
+    width: var(--pagenormalWidth);
+    background: rgb(255, 242, 199);
+    position: absolute;
+    border-radius: 2px 10px 10px 2px ;
+    z-index: -3;
+    transform: rotateX(10deg);
+    transform-origin: center left; /*to have the open book effect (open on the left)*/
+}
+
+.back-cover {
+    
+    height: var(--backPageHeight);
+
+    width: var(--backPageWidth);
+    background: #e07212;
+    border-radius: 2px 20px 20px 2px ;
+    position: absolute;
+    box-shadow: 1px 1px 10px gray;
+    transform: rotateX(10deg);
+    z-index: -4;
+    transform-origin: center left; /*to have the open book effect (open on the left)*/
+
+}
+
+/**********************Page de text du jeu************************/
+.page-gauche.hidden{
+    display: none;
+}
+
+.page-gauche{
+    position: absolute;
+    left: 1vw;
+    top: 8vh;
+    z-index: 3;
+    animation: 8s fadeIn;
+    animation-fill-mode: forwards; 
+    visibility: hidden;
+}
+
+/* #page-gauche.active{
+    position: absolute;
+    left: 22vw;
+    top: 15vh;
+} */
+
+.page-gauche > article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* margin: 0 20px; */
+    width : 22vw;
+}
+
+.page-gauche > article > h1{
+    margin: 85px 20px;
+    color: #E8B24A;
+
+    /* font-size: 6em; */
+}
+
+.page-gauche > article > h2{
+    margin: 20px 20px;
+    color: #000000;
+    /* font-size: 4em; */
+}
+
+.page-gauche > article > p{
+    margin: 10px 20px;
+    color: #000000;
+    /* font-size: 2em; */
 }
 
 
+/**********Input range**************/
 
-#page-droite-arrow {    
+.range{
+    /* position: absolute;
+    left: 300px;
+    top: 300px; */
+    padding: 0 65px 0 45px;
+    width: 13vw;
+    height: 7vh;
+    border-radius: 20px;
+    background: whitesmoke;
+}
+
+.range .field {
+    position: relative;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    height: 100%;
+}
+
+.range .field input{
+    -webkit-appearance: none;
+    height: 5px;
+    width: 90%;
+    background: #E9AA30;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+
+.range .field .value{
+    position: absolute;
+    font-size: 18px;
+    font-weight: 600;
+    color: #424356;
+}
+
+.range .field .value.left{
+    left: -22px;
+}
+
+.range .field .value.right{
+    right: -43px;
+}
+
+.range .sliderValue{
+    position: relative;
+    width: 100%;    
+    text-align: center;
+}
+
+.range .sliderValue span{
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    left: 50%;
+    color: #E9AA30;
+    font-weight: 500;
+    top: -40px;
+    transform: translateX(-9%) scale(0);
+    transform-origin: bottom;
+    transition: transform 0.3s ease-in-out;
+    line-height: 55px;
+    z-index: 2;
+}
+
+.range .sliderValue span.show{
+    transform: translateX(-9%) scale(1);
+}
+
+.range .sliderValue span::after{
+    position: absolute;
+    content: "";
+    height: 45px;
+    width: 45px;
+    background: #424356;
+    /* font-weight: 500; */
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    border: 3px solid #E9AA30;
+    z-index: -1;
+    border-top-right-radius: 25%;
+    border-top-left-radius: 25%;
+    border-bottom-left-radius: 25%;
+
+}
+
+.range .field input::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background: #424356;
+    border-radius: 50%;
+    border: 1px solid #E9AA30;
+    cursor: pointer;
+}
+
+/**********fin de Input range**************/
+/**********cutstomisation button choose lvl**************/
+/* #temp{
+    position: absolute;
+    top: 100px;
+    left : 100px;
+} */
+.choose-lvl-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#lvlChoose{
+    position: relative;
+    top: -72px;
+    color: #424356;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.text-normal{
+    font-size: 1.1em;
+}
+
+#choose-chap-img {
+    height: 13vh;
+}
+
+.page-droite.hidden{
+    display: none;
+}
+
+.page-droite{
+    position: absolute;
+    left: 37vw;
+    top: 3vh;
+    z-index: 3;
+    animation: 8s fadeIn;
+    animation-fill-mode: forwards; 
+    visibility: hidden;
+}
+
+#page-droite-flex{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 13vh;
+    justify-content: space-between;
+}
+
+#page-droite-arrow{
     display: flex;
     align-items: center;
     flex-direction: row;    
     justify-content: space-around;
     padding: 10px;
     max-height: 50px;
-
 }
-/* #page-droite-arrow img {    
-    height: 10px;
 
-} */
 
-#page-droite :nth-child(1) img{
-    height: 100px;
-    margin : 0 250px;
-
+.page-droite :nth-child(1) img{
+    height: 7vh;
+    margin : 0 10vw;
 }
+
+
 #previous{
     transform: rotate(180deg);
 }
-
-#life-status {
-    /* border: 1px solid tomato; */
-    
+#life-status {    
     padding: 5px ;
-    background-color: #7b2cbf;
-    border-radius: 50px;
-    width: 1000px;
+    background-color: #424356;
+    border: 3px solid #E9AA30;
+    border-radius: 1000px;
+    width: 45vw;
+    height: 2vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    color : white;
-    font-size: 2em;
+    color : #E9AA30;
+    font-size: 1em;
+}
+/**************************Animations*****************************/
+/****************************************************************/
+
+/**********************Animation cover************************/
+.book .cover.active{
+    transform: rotateX(10deg) rotateY(180deg);
 }
 
+/**********************Animation page************************/
+.book .page.active{
+    transform: rotateX(10deg) rotateY(180deg);
+    z-index: 2;
+}
+
+/**********************Animation notice************************/
+.book .notice-page.active{
+    transform: rotateX(10deg) rotateY(180deg);
+    z-index: 2;
+}
+
+/**********************Animation middlePage************************/
+.book .middle-page.active{
+    transform: rotateX(10deg) rotateY(180deg);
+    z-index: 2;
+}
+
+/**********************Animation canvas************************/
+.canvas.hidden{
+    display: none;
+}
+.canvas{
+    z-index: 3;
+    /* border : 2px solid #f4a261; */
+    position: absolute;
+    left: 23vw;
+    top: 17vh;
+    /* width : 75vw;
+    height : 75vh; */
+    animation: 8s fadeIn;
+    animation-fill-mode: forwards; 
+    visibility: hidden;
+    border-radius: 10px;
+}
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+      }
+      20%{
+          opacity: 0;
+      }
+      100% {
+        visibility: visible;
+        opacity: 1;
+      }
+  }
+
+/**********************Animation timing************************/
+
+.page:nth-child(2){
+    transition-duration: 3s;
+}
+.page:nth-child(3){
+    transition-duration: 2.6s;
+}
+.page:nth-child(4){
+    transition-duration: 2.2s;
+}
+.page:nth-child(5){
+    transition-duration: 1.8s;
+}
+.page:nth-child(6){
+    transition-duration: 1.4s;
+}
+
+.notice-page{
+    transition-duration: 2s;
+}
+
+.middle-page{
+    transition-duration: 2s;
+}
+
+.book:hover .page:nth-child(2){
+    transition-duration: 6s;
+
+}
+.book:hover .page:nth-child(3){
+    transition-duration: 5.6s;
+
+}
+.book:hover .page:nth-child(4){
+    transition-duration: 5.2s;
+
+}
+.book:hover .page:nth-child(5){
+    transition-duration: 4.8s;
+}
+.book:hover .page:nth-child(6){
+    transition-duration: 4.4s;
+}

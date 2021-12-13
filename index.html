@@ -5,66 +5,119 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/stylesMain.css">
-    <title>Shai-Hulud</title>
+    <title>Book test Shai Hulud</title>
 </head>
 <body>
-    <div id="bookBackground">
-        <div id="page-gauche">
-            <article>
-                <h1>Shai hulud</h1>
-                <!-- <h2>Vague <span id ="lvl">6</span></h2> -->
-                <h2>Vague <input id ="lvl" type="number" value="8"></h2>
+    <div class="container">
+        <div class="content">           
+            <div class="book">   
 
-                <p>During the battle against the almighty Shai Hulud, around 
-                    <span id = 'harkonnenNb'><strong style="color: #E8B24A"></strong> Harkonnens were deployed on the battle field. Some said that <strong style="color: #E8B24A"></strong> were eaten up by the Shai Hulud.</span><br> <br>
-                    <span id = 'sardaukarNb'></span><br>
-                    <span id = 'usine'> </span><br>
-                    <span id = 'harkonnenVehicule'></span>
-                </p>
-            
-            </article>
-        </div>
+                <div class="cover">
+                    <img id="cover-arrow" src="./img/arrow.svg" alt="next-page-arrow">
+                    <h1 class="title">Shai Hulud</h1>
+                    <h4 class="title">Hugo Lansade</h4>
+                </div>
+                <div class="page"></div>
+                <div class="page"></div>
+                <div class="page"></div>
+                <div class="page"></div>
+                <div class="page fresque"></div>
+                <div class="notice-page">
+                    <h1 class="center notice-title">Game notice</h1>
+                    <section id="notice-text">
+                        <h2 class="center" >Introduction</h2>
+                        <p>You embrace now the almighty Shai Hulud. The biggest sandworm of Arrakis.
+                            As a protector of your land, you will have to destroy Harkonnens, Sardaukars and their vehicules.
+                            You will win point of life by doing so. Nevertheless, be carefull of bombs that are drop on or under the sand.
+                        </p>
+                        <h2 class="center">How to play ?</h2>
+                        <p>
+                            You can use arrows keyboard to slide under the sand.
+                        </p>
+                    </section>
+                    <img id="notice-page-arrow" src="./img/arrow.svg" alt="next-page-arrow">
+                </div>
+                <div class="middle-page"></div>
+                <!-- <canvas id = "canvas"></canvas> -->
+                <div class="page-gauche hidden">
+                    <article>
+                        <h2 id="title-chapter">Chapter <span id ="lvl">1</span></h2>
+        
+                        <p class="text-normal">During the battle against the almighty Shai Hulud, around 
+                            <span id = 'harkonnenNb' ><strong style="color: #E8B24A"></strong> Harkonnens were deployed on the battle field. Some said that <strong style="color: #E8B24A"></strong> were eaten up by the Shai Hulud.</span><br> <br>
+                            <span id = 'sardaukarNb' ></span><br>
+                            <span id = 'usine' > </span><br>
+                            <span id = 'harkonnenVehicule' ></span>
+                        </p>
+                        
+                        <div class="range">
+                            <div class="sliderValue">
+                                <span id="lvlValue">1</span>
+                            </div>
+                            <div class="field">
+                                <div class="value left">1</div>
+                                <input type="range" min="1" max="100" value="1" id="inputValue">
+                                <div class="value right">100</div>        
+                            </div>
+                        </div>
+                        <div class="choose-lvl-container">
+                            <span class="text-normal"><strong>Go to chapter</strong></span>
+                            <img src="./img/btnChapterChoose.svg" alt="btn-choose-chapter" id="choose-chap-img">
+                            <span id="lvlChoose">1</span>
+                        </div>
+                    </article>
+                    
+                </div>
 
-        <div id="page-droite">
+                <div class="page-droite hidden">
+                    <div id="page-droite-flex">
 
-            <div id="page-droite-arrow">
-                <img id='previous' src="./image/arrow.png"></img> 
-                <h1>Vague <span id ="lvlcustom">6</span></h1>   
-                <img id='next' src="./image/arrow.png"></img>
+                        <div id="page-droite-arrow">
+                            <!-- <img id='previous' src="./img/arrow.svg"></img>                              -->
+                            <h1 id="title-shai-hulud">Shai hulud</h1>
+                            <!-- <img id='next' src="./img/arrow.svg"></img>         -->
+                        </div>
+
+                        <div id="life-status">
+                            Life  <span id="life-shai-hulud"></span> /100
+                        </div>
+                    </div>
+        
+                </div>
+                <canvas class="canvas hidden"></canvas>
+                <div style="display: none">
+                    <img id="bombeHarkonnen" src="./img/bombeHarkonnen.png"
+                        width="100" height="70">
+                    <img id="bombeSardaukar" src="./img/bombeSardaukar.png"
+                        width="100" height="70">
+                    <img id="bombeHarkonnenVehicule" src="./img/bombeVehiculeHarko.png"
+                    width="268" height="268">
+                    <img id="imageHarkonnen" src="./img/harkonnen.png"
+                    width="128" height="192">
+                    <img id="imageSardaukar" src="./img/sardaukar1.png"
+                    width="160" height="224">
+                    <!-- <img id="imageBackground" src="./img/background.svg"
+                    width="3000" height="1600"> -->
+                    <img id="imageBackground" src="./img/background-nuit.svg"
+                    width="3000" height="1600">
+                    <img id="imageVaisseau" src="./img/vaisseauSardaukar.png"
+                    width="895" height="282">
+                    <!-- <img id="imageUsine" src="./img/usine.png"
+                    width="1453" height="688"> -->
+                    <!-- <img id="imageUsine" src="./img/usineMediumSize.png"                    
+                    width="1417" height="627"> -->
+                    <img id="imageUsine" src="./img/usineSmallSize.png"                    
+                    width="1235" height="623">
+                    <img id="imageVehiculeHarkonnen" src="./img/vehiculeHarkonnen.png"
+                    width="663" height="305">
+                    <img id="imageShaiHulud" src="./img/shaiHulud.png"
+                    width="225" height="217">
+                    
+                </div>
+                <div class="game-page"></div>
+                <div class="back-cover"></div>
 
             </div>
-
-            <div style="display: none">
-                <img id="bombeHarkonnen" src="./image/bombeHarkonnen.png"
-                    width="100" height="70">
-                <img id="bombeSardaukar" src="./image/bombeSardaukar.png"
-                    width="100" height="70">
-                <img id="bombeHarkonnenVehicule" src="./image/bombeVehiculeHarko.png"
-                width="268" height="268">
-                <img id="imageHarkonnen" src="./image/harkonnen.png"
-                width="128" height="192">
-                <img id="imageSardaukar" src="./image/sardaukar1.png"
-                width="160" height="224">
-                <img id="imageBackground" src="./image/background.png"
-                width="3000" height="1600">
-                <img id="imageVaisseau" src="./image/vaisseauSardaukar.png"
-                width="895" height="282">
-                <img id="imageUsine" src="./image/usine.png"
-                width="1453" height="688">
-                <img id="imageVehiculeHarkonnen" src="./image/vehiculeHarkonnen.png"
-                width="663" height="305">
-                <img id="imageShaiHulud" src="./image/shaiHulud.png"
-                width="225" height="217">
-            </div>
-
-            <canvas id = "canvas">
-                
-            </canvas>
-
-            <div id= "life-status">
-                Life : <span id="life-shai-hulud"></span> /100
-            </div>
-
         </div>
     </div>
     <script src="./js/main.js"></script>

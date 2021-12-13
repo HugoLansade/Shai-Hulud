@@ -1,0 +1,15 @@
+<svg width="142" height="145" viewBox="0 0 142 145" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M80.8605 70.5L70.8953 61.5M79.5 51.5L97 31.5L68 5L41 34.5L60.9302 52.5M79.5 51.5L69.5 42M79.5 51.5L89 60.5M69.5 42L77.5 33L69.5 26L62 34.5L69.5 42ZM89 60.5L107 42L137.5 70.5L112.5 98L93 80M89 60.5L71.5 82M93 80L101.25 71M93 80L83 92M101.25 71L109.5 62L119 70.5L110.5 79L101.25 71ZM83 92L101.25 109L74.5 140L44.5 112.5L62 92M83 92L71.5 82M62 92L73.5 102.5M62 92L71.5 82M62 92L52 82M73.5 102.5L83 111L74.5 120.5L65 111.5L73.5 102.5ZM71.5 82L60.9302 72.5M60.9302 52.5L50.5 62M60.9302 52.5L70.8953 61.5M50.5 62L30.5 42L5 71L34.5 100.5L52 82M50.5 62L40.25 72M70.8953 61.5L60.9302 72.5M40.25 72L30.5 82L22 73.5L32 63L40.25 72ZM52 82L60.9302 72.5" stroke="#E8B24A" stroke-width="6"/>
+<g filter="url(#filter0_b_1209_1937)">
+<circle cx="71" cy="72" r="30" fill="white" fill-opacity="0.37"/>
+<circle cx="71" cy="72" r="28.5" stroke="#E8B24A" stroke-width="3"/>
+</g>
+<defs>
+<filter id="filter0_b_1209_1937" x="39" y="40" width="64" height="64" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImage" stdDeviation="1"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_1209_1937"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_1209_1937" result="shape"/>
+</filter>
+</defs>
+</svg>

@@ -42,7 +42,7 @@ body{
 
 #title-chapter{
     color : #424356;
-    font-size: 2em;
+    font-size: 2.5em;
 }
 
 .cover h1{
@@ -368,14 +368,14 @@ body{
 
 #lvlChoose{
     position: relative;
-    top: -72px;
+    top: -84px;
     color: #424356;
     font-weight: bold;
     font-size: 2em;
 }
 
 .text-normal{
-    font-size: 1.1em;
+    font-size: 1.5em;
 }
 
 #choose-chap-img {

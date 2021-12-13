@@ -350,12 +350,8 @@ body{
 }
 
 /**********fin de Input range**************/
-/**********cutstomisation button choose lvl**************/
-/* #temp{
-    position: absolute;
-    top: 100px;
-    left : 100px;
-} */
+/**********customisation button choose lvl**************/
+
 .choose-lvl-container{
     display: flex;
     flex-direction: column;

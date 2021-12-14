@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This little game was inspired from Frank Herbert's book Dune, recentrly re-adapte to screen by Denis Villeneuve.
+This little game was inspired from Dune a Frank Herbert's book, recently re-adapte to screen by Denis Villeneuve.
 
 ## The Game
 
@@ -15,7 +15,7 @@ By developping this game I improved my skills in DOM manipulation, class manipul
 To play the game you first have to open the book page by clicking on the right arrow. 
 Then continue to the next page and finaly you'll reach the playing part of the project.
 
-On the right you can find the screen you'll play with me. 
+On the right you can find the screen you'll play with. 
 You embody Shai Hulud, the giant worm sand of Arakis. You have to move through to reach the upper part of the sand to eat your enemies :
 
 * Harkonnens in black
@@ -35,7 +35,7 @@ But also a brief description of the battle you are leading and finaly a slider t
 ## Link to the game
 Hope you will have fun, here is the link you can use to directly go to the game :
 
-[Shai Hulud](https://hugolansade.github.io/Shai-Hulud/)
+                             [~~~Shai Hulud~~~](https://hugolansade.github.io/Shai-Hulud/)
 
 
 
